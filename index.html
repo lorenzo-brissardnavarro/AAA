@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Challenge Triple A</title>
+    <link rel="stylesheet" href="template.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Outil simple de monitoring avec un dashboard web</h1>
+        <p>Généré le : {{  }}</p>
+    </header>
+
+    <main>
+
+        <section>
+            <h2>Informations sur le processeur</h2>
+            <p>Nombre de coeurs : 2</p>
+            <p>Fréquence actuelle du CPU : {{  }}</p>
+            <p>Pourcentage d'utilisation du CPU : {{  }}%</p>
+        </section>
+
+        <section>
+            <h2>Informations sur la mémoire</h2>
+            <p>RAM utilisée : {{  }}GB</p>
+            <p>RAM totale : {{  }}GB</p>
+            <p>Pourcentage d'utilisation de la RAM : {{  }}%</p>
+        </section>
+        
+        <section>
+            <h2>Informations système</h2>
+            <p>Nom de la machine : {{  }}</p>
+            <p>Système d'exploitation : {{  }}</p>
+            <p>Heure de démarrage du système : {{  }}</p>
+            <p>Temps écoulé depuis le démarrage du système (uptime) : {{  }}</p>
+            <p>Nombre d'utilisateurs connectés : {{  }}</p>
+            <p>Adresse IP principale : {{  }}</p>
+        </section>
+
+        <section>
+            <h2>Informations sur les processus</h2>
+            <p>Liste des processus en cours avec leur consommation CPU (%)</p>
+            <p>Liste des processus en cours avec leur consommation RAM (%)</p>
+            <p>Top 3 des processus les plus gourmands en ressources</p>
+            <ul>
+                <li>{{ process_1 }}</li>
+                <li>{{ process_2 }}</li>
+                <li>{{ process_3 }}</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Informations sur les fichiers</h2>
+            <p>Analyse d'un fichier : {{   }}</p>
+            <p>Nombre de fichiers txt : {{  }}</p>
+            <p>Nombre de fichiers py : {{  }}</p>
+            <p>Nombre de fichiers pdf : {{  }}</p>
+            <p>Nombre de fichiers jpg : {{  }}</p>
+            <p>Nombre total de fichiers pour chaque extension : {{  }}</p>
+            <p>Pourcentage que représente chaque type de fichiers par rapport au total : {{  }}</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Rapport généré par le script de monitoring Python — {{ timestamp }}</p>
+    </footer>
+
+</body>
+</html>
