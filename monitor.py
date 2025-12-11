@@ -1,6 +1,9 @@
 import psutil
 import platform
 import socket
+import os
+import datetime
+import time
 
 # Infos processeur
 cores_count = psutil.cpu_count()
@@ -17,8 +20,48 @@ machine_name = socket.gethostname()
 os_name = platform.system()
 os_version = platform.release()
 
+boot_time = datetime.datetime.fromtimestamp(psutil.boot_time())
+print(boot_time)
+
+uptime_seconds = time.time() - psutil.boot_time()
+uptime = datetime.timedelta(seconds=int(uptime_seconds))
+print(uptime)
+
+for iface_name, iface_info in psutil.net_if_addrs().items():
+    for addr in iface_info:
+        if addr.family == socket.AF_INET and addr.address != "127.0.0.1":
+            print(addr.address)
+            break
 
 users = len(psutil.users())
+
+
+
+folder = "/home/projetubuntu/Documents"
+extensions = [".txt", ".py", ".pdf", ".jpg"]
+
+counts = {}
+for ext in extensions:
+    counts[ext] = 0
+
+total_files = 0
+
+for racine, dossiers, fichiers in os.walk(folder):
+    for nom in fichiers:
+        total_files += 1
+        for ext in extensions:
+            if nom.lower().endswith(ext):
+                counts[ext] += 1
+
+
+for ext in extensions: 
+    if total_files > 0:
+        percentage = (counts[ext] / total_files) * 100
+    else:
+        percentage = 0
+    print(f"{ext} : {counts[ext]} fichiers ({percentage:.2f}%)")
+
+print("Total de fichiers analysés :", total_files)
 
 
 # Lecture du fichier HTML pour remplacer les variables
