@@ -10,7 +10,7 @@
 
     <header>
         <h1>Outil simple de monitoring avec un dashboard web</h1>
-        <p>Généré le : {{  }}</p>
+        <p>Généré le : {{ timestamp }}</p>
     </header>
 
     <main>
@@ -18,32 +18,37 @@
         <section>
             <h2>Informations sur le processeur</h2>
             <p>Nombre de coeurs : {{ cores_count }}</p>
-            <p>Fréquence actuelle du CPU : {{ cores_freq }}</p>
-            <p>Pourcentage d'utilisation du CPU : {{ cores_usage_percentage }}%</p>
+            <p>Fréquence actuelle : {{ cores_freq }} MHz</p>
+            <p>Pourcentage d'utilisation : {{ cores_usage_percentage }}%</p>
         </section>
 
         <section>
             <h2>Informations sur la mémoire</h2>
-            <p>RAM utilisée : {{ used_memory }}GB</p>
-            <p>RAM totale : {{ total_memory }}GB</p>
+            <p>RAM utilisée : {{ used_memory }} GB</p>
+            <p>RAM totale : {{ total_memory }} GB</p>
             <p>Pourcentage d'utilisation de la RAM : {{ memory_usage_percentage }}%</p>
         </section>
         
         <section>
             <h2>Informations système</h2>
             <p>Nom de la machine : {{ machine_name }}</p>
-            <p>Système d'exploitation : {{ os_name }} avec la version {{ os_version }}</p>
-            <p>Heure de démarrage du système : {{  }}</p>
-            <p>Temps écoulé depuis le démarrage du système (uptime) : {{  }}</p>
+            <p>Système d'exploitation : {{ os_name }} — version {{ os_version }}</p>
+            <p>Heure de démarrage du système : {{ boot_time }}</p>
+            <p>Temps écoulé depuis le démarrage (uptime) : {{ uptime }}</p>
             <p>Nombre d'utilisateurs connectés : {{ users }}</p>
-            <p>Adresse IP principale : {{  }}</p>
+            <p>Adresse IP principale : {{ ip_adress }}</p>
         </section>
 
         <section>
             <h2>Informations sur les processus</h2>
-            <p>Liste des processus en cours avec leur consommation CPU (%)</p>
-            <p>Liste des processus en cours avec leur consommation RAM (%)</p>
-            <p>Top 3 des processus les plus gourmands en ressources</p>
+
+            <h3>Consommation CPU (%)</h3>
+            <div>{{ cpu_processus_list }}</div>
+
+            <h3>Consommation RAM (%)</h3>
+            <div>{{ memory_processus_list }}</div>
+
+            <h3>Top 3 des processus les plus gourmands</h3>
             <ul>
                 <li>{{ process_1 }}</li>
                 <li>{{ process_2 }}</li>
@@ -53,13 +58,22 @@
 
         <section>
             <h2>Informations sur les fichiers</h2>
-            <p>Analyse d'un fichier : {{   }}</p>
-            <p>Nombre de fichiers txt : {{  }}</p>
-            <p>Nombre de fichiers py : {{  }}</p>
-            <p>Nombre de fichiers pdf : {{  }}</p>
-            <p>Nombre de fichiers jpg : {{  }}</p>
-            <p>Nombre total de fichiers pour chaque extension : {{  }}</p>
-            <p>Pourcentage que représente chaque type de fichiers par rapport au total : {{  }}</p>
+            <p>Dossier analysé : {{ folder }}</p>
+
+            <p>Nombre total de fichiers : {{ total_files }}</p>
+
+            <p>Nombre de fichiers txt : {{ count_txt }}</p>
+            <p>Nombre de fichiers py : {{ count_py }}</p>
+            <p>Nombre de fichiers pdf : {{ count_pdf }}</p>
+            <p>Nombre de fichiers jpg : {{ count_jpg }}</p>
+
+            <p>Pourcentages :</p>
+            <ul>
+                <li>TXT : {{ percentage_txt }}%</li>
+                <li>PY : {{ percentage_py }}%</li>
+                <li>PDF : {{ percentage_pdf }}%</li>
+                <li>JPG : {{ percentage_jpg }}%</li>
+            </ul>
         </section>
 
     </main>
@@ -67,6 +81,7 @@
     <footer>
         <p>Rapport généré par le script de monitoring Python — {{ timestamp }}</p>
     </footer>
+
 
 </body>
 </html>
