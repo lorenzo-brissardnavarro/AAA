@@ -63,8 +63,12 @@ def analyze_files(folder, extensions):
     percentage_py = round((counts[".py"] / total_files) * 100, 2)
     percentage_pdf = round((counts[".pdf"] / total_files) * 100, 2)
     percentage_jpg = round((counts[".jpg"] / total_files) * 100, 2)
+    percentage_html = round((counts[".html"] / total_files) * 100, 2)
+    percentage_css = round((counts[".css"] / total_files) * 100, 2)
+    percentage_js = round((counts[".js"] / total_files) * 100, 2)
+    percentage_png = round((counts[".png"] / total_files) * 100, 2)
 
-    return total_files, counts, percentage_txt, percentage_py, percentage_pdf, percentage_jpg
+    return total_files, counts, percentage_txt, percentage_py, percentage_pdf, percentage_jpg, percentage_html, percentage_css, percentage_js, percentage_png
 
 
 def get_process_infos():
@@ -128,9 +132,9 @@ def collect_replacements():
     machine_name, os_name, os_version, boot_time, uptime, ip_adress, users = get_system_infos()
 
     folder = "/home/projetubuntu/Documents"
-    extensions = [".txt", ".py", ".pdf", ".jpg"]
+    extensions = [".txt", ".py", ".pdf", ".jpg", ".html", ".css", ".js", ".png"]
 
-    total_files, counts, percentage_txt, percentage_py, percentage_pdf, percentage_jpg = analyze_files(folder, extensions)
+    total_files, counts, percentage_txt, percentage_py, percentage_pdf, percentage_jpg, percentage_html, percentage_css, percentage_js, percentage_png = analyze_files(folder, extensions)
 
     cpu_processus, memory_processus = get_process_infos()
     cpu_processus_list, memory_processus_list = format_process_lists(cpu_processus, memory_processus)
@@ -163,10 +167,18 @@ def collect_replacements():
         "{{ count_py }}": counts[".py"],
         "{{ count_pdf }}": counts[".pdf"],
         "{{ count_jpg }}": counts[".jpg"],
+        "{{ count_html }}": counts[".html"],
+        "{{ count_css }}": counts[".css"],
+        "{{ count_js }}": counts[".js"],
+        "{{ count_png }}": counts[".png"],
         "{{ percentage_txt }}": percentage_txt,
         "{{ percentage_py }}": percentage_py,
         "{{ percentage_pdf }}": percentage_pdf,
-        "{{ percentage_jpg }}": percentage_jpg
+        "{{ percentage_jpg }}": percentage_jpg,
+        "{{ percentage_html }}": percentage_html,
+        "{{ percentage_css }}": percentage_css,
+        "{{ percentage_js }}": percentage_js,
+        "{{ percentage_png }}": percentage_png
     }
 
     return replacements
@@ -183,8 +195,11 @@ def generate_html(replacements):
 
 
 def main():
-    replacements = collect_replacements()
-    generate_html(replacements)
+    running = True
+    while running:
+        replacements = collect_replacements()
+        generate_html(replacements)
+        time.sleep(30)
 
 
 main()

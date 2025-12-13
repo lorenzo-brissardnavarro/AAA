@@ -47,26 +47,39 @@ const txtCount = Number(fileCanvas.dataset.txt);
 const pyCount = Number(fileCanvas.dataset.py);
 const pdfCount = Number(fileCanvas.dataset.pdf);
 const jpgCount = Number(fileCanvas.dataset.jpg);
+const htmlCount = Number(fileCanvas.dataset.html);
+const cssCount = Number(fileCanvas.dataset.css);
+const jsCount = Number(fileCanvas.dataset.js);
+const pngCount = Number(fileCanvas.dataset.png);
 const totalFiles = Number(fileCanvas.dataset.total);
 
-const labels = ['txt', 'py', 'pdf', 'jpg'];
+const labels = ['txt', 'py', 'pdf', 'jpg', 'html', 'css', 'js', 'png'];
 const data = {
   labels: labels,
   datasets: [{
     label: 'Nombre de fichiers',
-    data: [txtCount, pyCount, pdfCount, jpgCount],
+    data: [txtCount, pyCount, pdfCount, jpgCount, htmlCount, cssCount, jsCount, pngCount],
     backgroundColor: [
-      'rgba(255, 99, 132, 0.2)',
-      'rgba(255, 159, 64, 0.2)',
-      'rgba(255, 205, 86, 0.2)',
-      'rgba(75, 192, 192, 0.2)'
-    ],
-    borderColor: [
-      'rgb(255, 99, 132)',
-      'rgb(255, 159, 64)',
-      'rgb(255, 205, 86)',
-      'rgb(75, 192, 192)'
-    ],
+  'rgba(255, 99, 132, 0.2)',
+  'rgba(255, 159, 64, 0.2)',
+  'rgba(255, 205, 86, 0.2)',
+  'rgba(75, 192, 192, 0.2)',
+  'rgba(54, 162, 235, 0.2)',
+  'rgba(153, 102, 255, 0.2)',
+  'rgba(201, 203, 207, 0.2)',
+  'rgba(0, 128, 128, 0.2)'
+],
+borderColor: [
+  'rgb(255, 99, 132)', 
+  'rgb(255, 159, 64)', 
+  'rgb(255, 205, 86)', 
+  'rgb(75, 192, 192)', 
+  'rgb(54, 162, 235)',  
+  'rgb(153, 102, 255)', 
+  'rgb(201, 203, 207)',
+  'rgb(0, 128, 128)'
+],
+
     borderWidth: 1
   }]
 };

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="template.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+    <meta http-equiv="refresh" content="30">
 </head>
 
 <body>
@@ -78,6 +79,10 @@
                     data-py="{{ count_py }}"
                     data-pdf="{{ count_pdf }}"
                     data-jpg="{{ count_jpg }}"
+                    data-html="{{ count_html }}"
+                    data-css="{{ count_css }}"
+                    data-js="{{ count_js }}"
+                    data-png="{{ count_png }}"
                     data-total="{{ total_count }}"
                 ></canvas>
             </div>
@@ -88,6 +93,10 @@
                 <li>PY : {{ percentage_py }}%</li>
                 <li>PDF : {{ percentage_pdf }}%</li>
                 <li>JPG : {{ percentage_jpg }}%</li>
+                <li>HTML : {{ percentage_html }}%</li>
+                <li>CSS : {{ percentage_css }}%</li>
+                <li>JS : {{ percentage_js }}%</li>
+                <li>PNG : {{ percentage_png }}%</li>
             </ul>
         </section>
 
