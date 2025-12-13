@@ -134,6 +134,14 @@ Le tableau de bord affiche alors les données collectées.
 
 ## Captures d'écran
 
+- Lancement du script :
+
+![Commande python3 monitor.py pour lancer le script](screenshots/terminal-lancement-projet.png)
+
+- Dashboard généré par le script :
+
+![Partie données CPU, RAM et système](screenshots/dashboard-1.png)
+![Partie analyse des processus et des fichiers](screenshots/dashboard-2.png)
 
 ## Difficultées rencontrées
 
