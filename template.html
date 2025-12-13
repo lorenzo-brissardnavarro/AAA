@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Challenge Triple A</title>
     <link rel="stylesheet" href="template.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
 </head>
 
 <body>
@@ -19,14 +21,22 @@
             <h2>Informations sur le processeur</h2>
             <p>Nombre de coeurs : {{ cores_count }}</p>
             <p>Fréquence actuelle : {{ cores_freq }} MHz</p>
-            <p>Pourcentage d'utilisation : {{ cores_usage_percentage }}%</p>
+            <p>Pourcentage d'utilisation du CPU : </p>
+            <div class="chart-container">
+                <canvas id="cpu_chart" data-value="{{ cores_usage_percentage }}"></canvas>
+                <p class="value-percentage">{{ cores_usage_percentage }}%</p>
+            </div>
         </section>
 
         <section>
             <h2>Informations sur la mémoire</h2>
             <p>RAM utilisée : {{ used_memory }} GB</p>
             <p>RAM totale : {{ total_memory }} GB</p>
-            <p>Pourcentage d'utilisation de la RAM : {{ memory_usage_percentage }}%</p>
+            <p>Pourcentage d'utilisation de la RAM : </p>
+            <div class="chart-container">
+                <canvas id="memory_chart" data-value="{{ memory_usage_percentage }}" ></canvas>
+                <p class="value-percentage">{{ memory_usage_percentage }}%</p>
+            </div>
         </section>
         
         <section>
@@ -62,10 +72,15 @@
 
             <p>Nombre total de fichiers : {{ total_files }}</p>
 
-            <p>Nombre de fichiers txt : {{ count_txt }}</p>
-            <p>Nombre de fichiers py : {{ count_py }}</p>
-            <p>Nombre de fichiers pdf : {{ count_pdf }}</p>
-            <p>Nombre de fichiers jpg : {{ count_jpg }}</p>
+            <div class="chart-container">
+                <canvas id="file_chart"
+                    data-txt="{{ count_txt }}"
+                    data-py="{{ count_py }}"
+                    data-pdf="{{ count_pdf }}"
+                    data-jpg="{{ count_jpg }}"
+                    data-total="{{ total_count }}"
+                ></canvas>
+            </div>
 
             <p>Pourcentages :</p>
             <ul>
@@ -81,6 +96,8 @@
     <footer>
         <p>Rapport généré par le script de monitoring Python — {{ timestamp }}</p>
     </footer>
+
+    <script src="script.js"></script>
 
 
 </body>
